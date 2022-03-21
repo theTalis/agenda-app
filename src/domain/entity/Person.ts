@@ -8,7 +8,6 @@ export default class Person {
     }
 
     getNameLength() : number {
-        return 5;
         return this.name.length;
     }
 }

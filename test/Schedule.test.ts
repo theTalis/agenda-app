@@ -1,4 +1,4 @@
-import Schedule from "../Schedule";
+import Schedule from "../src/Schedule";
 
 test("Deve verificar se a data possui agenda disponível", function () {
     const schedule = new Schedule(new Date("2022-03-25 10:00:00"));

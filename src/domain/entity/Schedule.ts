@@ -3,7 +3,7 @@ import ScheduleItem from "./ScheduleItem";
 
 export default class Schedule {
     date: Date;
-    scheduleItems: ScheduleItem[];
+    private scheduleItems: ScheduleItem[];
 
     constructor (date: Date) {
         this.date = date;

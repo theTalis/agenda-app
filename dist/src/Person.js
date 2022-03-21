@@ -6,7 +6,6 @@ class Person {
         this.name = name;
     }
     getNameLength() {
-        return 5;
         return this.name.length;
     }
 }
