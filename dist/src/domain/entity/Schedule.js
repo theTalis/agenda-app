@@ -3,14 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const OrderCode_1 = __importDefault(require("./OrderCode"));
+const ScheduleCode_1 = __importDefault(require("./ScheduleCode"));
 const ScheduleItem_1 = __importDefault(require("./ScheduleItem"));
 class Schedule {
     constructor(date, sequence = 1) {
         this.sequence = sequence;
         this.scheduleItems = [];
         this.date = date;
-        this.code = new OrderCode_1.default(date, sequence);
+        this.code = new ScheduleCode_1.default(date, sequence);
     }
     addItem(item) {
         this.scheduleItems.push(new ScheduleItem_1.default(item.idPerson, 1));

@@ -5,5 +5,8 @@ class ScheduleItem {
         this.idPerson = idPerson;
         this.status = status;
     }
+    getStatus() {
+        return this.status;
+    }
 }
 exports.default = ScheduleItem;

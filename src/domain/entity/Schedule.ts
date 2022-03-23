@@ -1,4 +1,4 @@
-import ScheduleCode from "./OrderCode";
+import ScheduleCode from "./ScheduleCode";
 import Person from "./Person";
 import ScheduleItem from "./ScheduleItem";
 

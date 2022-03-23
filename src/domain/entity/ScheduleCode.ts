@@ -7,8 +7,6 @@ export default class ScheduleCode {
 	
 	generateCode (date: Date, sequence: number) {
 		const year = date.getFullYear();
-		const month = date.getMonth()+1;
-		const day = date.getDay();
-		return `${year}${month}${day}${sequence.toString().padStart(8, "0")}`;
+		return `${year}${sequence.toString().padStart(8, "0")}`;
 	}
 }
