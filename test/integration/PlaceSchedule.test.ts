@@ -1,6 +1,7 @@
 
 import PlaceSchedule from "../../src/application/usecase/place_schedule/PlaceSchedule";
 import PgPromiseConnectionAdapter from "../../src/infra/database/PgPromiseConnectionAdapter";
+import DatabaseRepositoryFactory from "../../src/infra/factory/DatabaseRepositoryFactory";
 import PersonRepositoryDatabase from "../../src/infra/repository/database/PersonRepositoryDatabase";
 import ScheduleRepositoryDatabase from "../../src/infra/repository/database/ScheduleRepositoryDatabase";
 
@@ -9,9 +10,9 @@ let scheduleRepository: ScheduleRepositoryDatabase;
 
 beforeEach(function () {
 	const connection = PgPromiseConnectionAdapter.getInstance();
-	const personRepository = new PersonRepositoryDatabase(connection);
 	scheduleRepository = new ScheduleRepositoryDatabase(connection);
-	placeSchedule = new PlaceSchedule(personRepository, scheduleRepository);
+	const repositoryFactory = new DatabaseRepositoryFactory();
+	placeSchedule = new PlaceSchedule(repositoryFactory);	
 });
 
 test("Deve fazer um agendamento", async function () {

@@ -1,12 +1,17 @@
 import Schedule from "../../../domain/entity/Schedule";
+import RepositoryFactory from "../../../domain/factory/RepositoryFactory";
 import PersonRepository from "../../../domain/repository/PersonRepository";
 import ScheduleRepository from "../../../domain/repository/ScheduleRepository";
 import PlaceScheduleInput from "./PlaceScheduleInput";
 import PlaceScheduleOutput from "./PlaceScheduleOutput";
 
 export default class PlaceSchedule {
+	personRepository: PersonRepository;
+	scheduleRepository: ScheduleRepository;
 
-	constructor (readonly personRepository: PersonRepository, readonly scheduleRepository: ScheduleRepository) {
+	constructor (readonly repositoryFactory: RepositoryFactory) {
+		this.personRepository = repositoryFactory.createPersonRepository();
+		this.scheduleRepository = repositoryFactory.createScheduleRepository();
 	}
 
 	async execute (input: PlaceScheduleInput): Promise<PlaceScheduleOutput> {

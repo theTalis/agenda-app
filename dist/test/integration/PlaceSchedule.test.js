@@ -14,15 +14,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const PlaceSchedule_1 = __importDefault(require("../../src/application/usecase/place_schedule/PlaceSchedule"));
 const PgPromiseConnectionAdapter_1 = __importDefault(require("../../src/infra/database/PgPromiseConnectionAdapter"));
-const PersonRepositoryDatabase_1 = __importDefault(require("../../src/infra/repository/database/PersonRepositoryDatabase"));
+const DatabaseRepositoryFactory_1 = __importDefault(require("../../src/infra/factory/DatabaseRepositoryFactory"));
 const ScheduleRepositoryDatabase_1 = __importDefault(require("../../src/infra/repository/database/ScheduleRepositoryDatabase"));
 let placeSchedule;
 let scheduleRepository;
 beforeEach(function () {
     const connection = PgPromiseConnectionAdapter_1.default.getInstance();
-    const personRepository = new PersonRepositoryDatabase_1.default(connection);
     scheduleRepository = new ScheduleRepositoryDatabase_1.default(connection);
-    placeSchedule = new PlaceSchedule_1.default(personRepository, scheduleRepository);
+    const repositoryFactory = new DatabaseRepositoryFactory_1.default();
+    placeSchedule = new PlaceSchedule_1.default(repositoryFactory);
 });
 test("Deve fazer um agendamento", function () {
     return __awaiter(this, void 0, void 0, function* () {

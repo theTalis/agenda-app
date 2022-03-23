@@ -15,9 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Schedule_1 = __importDefault(require("../../../domain/entity/Schedule"));
 const PlaceScheduleOutput_1 = __importDefault(require("./PlaceScheduleOutput"));
 class PlaceSchedule {
-    constructor(personRepository, scheduleRepository) {
-        this.personRepository = personRepository;
-        this.scheduleRepository = scheduleRepository;
+    constructor(repositoryFactory) {
+        this.repositoryFactory = repositoryFactory;
+        this.personRepository = repositoryFactory.createPersonRepository();
+        this.scheduleRepository = repositoryFactory.createScheduleRepository();
     }
     execute(input) {
         return __awaiter(this, void 0, void 0, function* () {
