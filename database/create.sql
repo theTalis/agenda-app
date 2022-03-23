@@ -18,6 +18,7 @@ insert into app.person (id_person, name, createdat, phone, email, status) values
 
 create table app.schedule (
 	id_schedule serial primary key,
+	code text,
 	date timestamp
 );
 

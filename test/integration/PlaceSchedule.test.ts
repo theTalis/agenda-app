@@ -1,35 +1,32 @@
-import PlaceSchedule from "../../src/application/usecase/place_order/PlaceOrder";
-import PgPromiseConnectionAdapter from "../../src/infra/database/PgPromiseConnectionAdapter";
-import CouponRepositoryDatabase from "../../src/infra/repository/database/CouponRepositoryDatabase";
-import ItemRepositoryDatabase from "../../src/infra/repository/database/ItemRepositoryDatabase";
-import OrderRepositoryDatabase from "../../src/infra/repository/database/OrderRepositoryDatabase";
 
-let placeOrder: PlaceOrder;
-let orderRepository: OrderRepositoryDatabase;
+import PlaceSchedule from "../../src/application/usecase/place_schedule/PlaceSchedule";
+import PgPromiseConnectionAdapter from "../../src/infra/database/PgPromiseConnectionAdapter";
+import PersonRepositoryDatabase from "../../src/infra/repository/database/PersonRepositoryDatabase";
+import ScheduleRepositoryDatabase from "../../src/infra/repository/database/ScheduleRepositoryDatabase";
+
+let placeSchedule: PlaceSchedule;
+let scheduleRepository: ScheduleRepositoryDatabase;
 
 beforeEach(function () {
 	const connection = PgPromiseConnectionAdapter.getInstance();
-	const itemRepository = new ItemRepositoryDatabase(connection);
-	orderRepository = new OrderRepositoryDatabase(connection);
-	const couponRepository = new CouponRepositoryDatabase(connection);
-	placeOrder = new PlaceOrder(itemRepository, orderRepository, couponRepository);
+	const personRepository = new PersonRepositoryDatabase(connection);
+	scheduleRepository = new ScheduleRepositoryDatabase(connection);
+	placeSchedule = new PlaceSchedule(personRepository, scheduleRepository);
 });
 
-test("Deve fazer um pedido", async function () {
+test("Deve fazer um agendamento", async function () {
 	const input = {
-		cpf: "839.435.452-10",
-		orderItems: [
-			{ idItem: 1, quantity: 1},
-			{ idItem: 2, quantity: 1},
-			{ idItem: 3, quantity: 3}
-		],
 		date: new Date("2021-12-10"),
-		coupon: "VALE20"
+		scheduleItems: [
+			{ idPerson: 1, status: 1},
+			{ idPerson: 2, status: 1},
+			{ idPerson: 3, status: 1}
+		],
 	};
-	const output = await placeOrder.execute(input);
-	expect(output.total).toBe(138);
+	const output = await placeSchedule.execute(input);
+	expect(output.total).toBe(3);
 });
-
+/*
 test("Deve fazer um pedido com cálculo de frete", async function () {
 	const input = {
 		cpf: "839.435.452-10",
@@ -61,3 +58,4 @@ test("Deve fazer um pedido com código", async function () {
 afterEach(async function () {
 	await orderRepository.clear();
 });
+*/

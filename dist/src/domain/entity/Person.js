@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Person {
-    constructor(id, name) {
-        this.id = id;
+    constructor(idPerson, name, createdAt, phone, email, status) {
+        this.idPerson = idPerson;
         this.name = name;
-    }
-    getNameLength() {
-        return this.name.length;
+        this.createdAt = createdAt;
+        this.phone = phone;
+        this.email = email;
+        this.status = status;
     }
 }
 exports.default = Person;

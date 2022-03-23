@@ -18,7 +18,8 @@ export default class PlaceSchedule {
 			schedule.addItem(person);
 		}
 		await this.scheduleRepository.save(schedule);
-		const output = new PlaceScheduleOutput(schedule.getCode());
+		const total = schedule.getTotal();
+		const output = new PlaceScheduleOutput(schedule.getCode(), total);
 		return output;
 	}
 }

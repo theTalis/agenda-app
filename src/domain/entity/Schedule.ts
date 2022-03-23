@@ -24,4 +24,8 @@ export default class Schedule {
 	getCode () {
 		return this.code.value;
 	}
+
+	getTotal () {
+		return this.scheduleItems.length;
+	}
 }
