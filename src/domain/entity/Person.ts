@@ -1,13 +1,5 @@
 export default class Person {
-    id: number;
-    name: string;
 
-    constructor (id: number, name: string) {
-        this.id = id;
-        this.name = name;
-    }
-
-    getNameLength() : number {
-        return this.name.length;
-    }
+	constructor (readonly idPerson: number, readonly name: string, readonly createdAt: Date, readonly phone: string, readonly email: string, readonly status: number) {
+	}
 }

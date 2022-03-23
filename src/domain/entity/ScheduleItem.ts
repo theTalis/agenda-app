@@ -1,10 +1,5 @@
 export default class ScheduleItem {
-    
-    constructor (readonly idPerson: number, readonly date: Date) {
 
-    }
-
-    getIdPerson() {
-        return this.idPerson;
-    }
+	constructor (readonly idPerson: number, readonly status: number) {
+	}
 }

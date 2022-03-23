@@ -1,24 +1,27 @@
+import ScheduleCode from "./OrderCode";
 import Person from "./Person";
 import ScheduleItem from "./ScheduleItem";
 
 export default class Schedule {
-    date: Date;
-    private scheduleItems: ScheduleItem[];
+	private scheduleItems: ScheduleItem[];
+	date: Date;
+	private code: ScheduleCode;
+	
+	constructor (date: Date, readonly sequence: number = 1) {
+		this.scheduleItems = [];
+		this.date = date;
+		this.code = new ScheduleCode(date, sequence);
+	}
 
-    constructor (date: Date) {
-        this.date = date;
-        this.scheduleItems = [];
-    }
+	addItem (item: Person) {
+		this.scheduleItems.push(new ScheduleItem(item.idPerson, 1));
+	}
 
-    addItem(person: Person, date: Date) {
-        this.scheduleItems.push(new ScheduleItem(person.id, new Date("2022-03-25 10:00:00")));
-    }
+	getScheduleItems () {
+		return this.scheduleItems;
+	}
 
-    getTotal() {
-        return this.scheduleItems.length;
-    }
-
-    getFreeSchedule() {
-        return true;
-    }
+	getCode () {
+		return this.code.value;
+	}
 }
