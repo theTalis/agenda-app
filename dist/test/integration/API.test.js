@@ -45,44 +45,40 @@ test("Deve testar a API /schedules (POST)", function () {
 });
 test("Deve testar a API /schedules (GET)", function () {
     return __awaiter(this, void 0, void 0, function* () {
-        /*const input = {
+        const input = {
             date: new Date("2021-12-10"),
             scheduleItems: [
-                { idPerson: 1, status: 1},
-                { idPerson: 2, status: 1},
-                { idPerson: 3, status: 1}
+                { idPerson: 1, status: 1 },
+                { idPerson: 2, status: 1 },
+                { idPerson: 3, status: 1 }
             ],
         };
-        await placeSchedule.execute(input);
-        const response = await axios({
+        yield placeSchedule.execute(input);
+        const response = yield (0, axios_1.default)({
             url: "http://localhost:3000/schedules",
             method: "get"
         });
         const schedules = response.data;
-        console.log("GET SCHED");
-        console.log(schedules);*/
-        expect(true).toBeTruthy();
-        //expect(schedules.schedules).toHaveLength(1);
+        expect(schedules.schedules).toHaveLength(1);
     });
 });
 test("Deve testar a API /schedules/code (GET)", function () {
     return __awaiter(this, void 0, void 0, function* () {
-        expect(true).toBeTruthy();
-        /*const input = {
+        const input = {
             date: new Date("2021-12-10"),
             scheduleItems: [
-                { idPerson: 1, status: 1},
-                { idPerson: 2, status: 1},
-                { idPerson: 3, status: 1}
+                { idPerson: 1, status: 1 },
+                { idPerson: 2, status: 1 },
+                { idPerson: 3, status: 1 }
             ],
         };
-        await placeSchedule.execute(input);
-        const response = await axios({
+        yield placeSchedule.execute(input);
+        const response = yield (0, axios_1.default)({
             url: "http://localhost:3000/schedules/202100000001",
             method: "get"
         });
-        const schedules = response.data;*/
-        //expect(schedules.code).toBe("202100000001");
+        const schedules = response.data;
+        expect(schedules.code).toBe("202100000001");
     });
 });
 afterEach(function () {

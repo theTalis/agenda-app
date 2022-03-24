@@ -19,10 +19,7 @@ beforeEach(function () {
 });
 
 test("Deve obter todos os agendamentos", async function () {
-
-	expect(true).toBeTruthy();
-
-	/*const input = {
+	const input = {
 		date: new Date("2021-12-10"),
 		scheduleItems: [
 			{ idPerson: 1, status: 1},
@@ -31,8 +28,8 @@ test("Deve obter todos os agendamentos", async function () {
 		],
 	};
 	await placeSchedule.execute(input);
-	const getSchedulesOutput = await getSchedules.execute();*/
-	//expect(getSchedulesOutput.schedules).toHaveLength(1);
+	const getSchedulesOutput = await getSchedules.execute();
+	expect(getSchedulesOutput.schedules).toHaveLength(1);
 });
 
 afterEach(async function () {

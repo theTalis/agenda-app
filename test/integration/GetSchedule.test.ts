@@ -19,9 +19,7 @@ beforeEach(function () {
 });
 
 test("Deve obter um agendamento pelo código", async function () {
-
-	expect(true).toBeTruthy();
-	/*const input = {
+	const input = {
 		date: new Date("2021-12-10"),
 		scheduleItems: [
 			{ idPerson: 1, status: 1},
@@ -31,12 +29,7 @@ test("Deve obter um agendamento pelo código", async function () {
 	};
 	const placeScheduleOutput = await placeSchedule.execute(input);
 	const getScheduleOutput = await getSchedule.execute(placeScheduleOutput.code);
-
-	console.log("GET SCHEDULE");
-	console.log(getScheduleOutput.code);
-	console.log(getScheduleOutput.total);*/
-
-	//expect(getScheduleOutput.code).toBe("202100000001");
+	expect(getScheduleOutput.code).toBe("202100000001");
 });
 
 afterEach(async function () {

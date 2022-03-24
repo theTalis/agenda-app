@@ -40,17 +40,16 @@ test("Deve fazer um agendamento", function () {
 });
 test("Deve fazer um agendamento com código", function () {
     return __awaiter(this, void 0, void 0, function* () {
-        expect(true).toBeTruthy();
-        /*const input = {
+        const input = {
             date: new Date("2021-12-01"),
             scheduleItems: [
-                { idPerson: 4, status: 1},
-                { idPerson: 5, status: 1},
-                { idPerson: 6, status: 1}
+                { idPerson: 4, status: 1 },
+                { idPerson: 5, status: 1 },
+                { idPerson: 6, status: 1 }
             ],
         };
-        const output = await placeSchedule.execute(input);*/
-        //expect(output.code).toBe("202100000001");
+        const output = yield placeSchedule.execute(input);
+        expect(output.code).toBe("202100000001");
     });
 });
 afterEach(function () {

@@ -31,22 +31,17 @@ beforeEach(function () {
 });
 test("Deve obter um agendamento pelo código", function () {
     return __awaiter(this, void 0, void 0, function* () {
-        expect(true).toBeTruthy();
-        /*const input = {
+        const input = {
             date: new Date("2021-12-10"),
             scheduleItems: [
-                { idPerson: 1, status: 1},
-                { idPerson: 2, status: 1},
-                { idPerson: 3, status: 1}
+                { idPerson: 1, status: 1 },
+                { idPerson: 2, status: 1 },
+                { idPerson: 3, status: 1 }
             ],
         };
-        const placeScheduleOutput = await placeSchedule.execute(input);
-        const getScheduleOutput = await getSchedule.execute(placeScheduleOutput.code);
-    
-        console.log("GET SCHEDULE");
-        console.log(getScheduleOutput.code);
-        console.log(getScheduleOutput.total);*/
-        //expect(getScheduleOutput.code).toBe("202100000001");
+        const placeScheduleOutput = yield placeSchedule.execute(input);
+        const getScheduleOutput = yield getSchedule.execute(placeScheduleOutput.code);
+        expect(getScheduleOutput.code).toBe("202100000001");
     });
 });
 afterEach(function () {

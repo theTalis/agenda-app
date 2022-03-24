@@ -29,9 +29,7 @@ test("Deve fazer um agendamento", async function () {
 });
 
 test("Deve fazer um agendamento com código", async function () {
-
-	expect(true).toBeTruthy();
-	/*const input = {
+	const input = {
 		date: new Date("2021-12-01"),
 		scheduleItems: [
 			{ idPerson: 4, status: 1},
@@ -39,8 +37,8 @@ test("Deve fazer um agendamento com código", async function () {
 			{ idPerson: 6, status: 1}
 		],
 	};
-	const output = await placeSchedule.execute(input);*/
-	//expect(output.code).toBe("202100000001");
+	const output = await placeSchedule.execute(input);
+	expect(output.code).toBe("202100000001");
 });
 
 afterEach(async function () {
