@@ -12,45 +12,41 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const GetSchedule_1 = __importDefault(require("../../src/application/usecase/get_schedule/GetSchedule"));
 const PlaceSchedule_1 = __importDefault(require("../../src/application/usecase/place_schedule/PlaceSchedule"));
+const ScheduleDAODatabase_1 = __importDefault(require("../../src/infra/dao/ScheduleDAODatabase"));
 const PgPromiseConnectionAdapter_1 = __importDefault(require("../../src/infra/database/PgPromiseConnectionAdapter"));
 const DatabaseRepositoryFactory_1 = __importDefault(require("../../src/infra/factory/DatabaseRepositoryFactory"));
 const ScheduleRepositoryDatabase_1 = __importDefault(require("../../src/infra/repository/database/ScheduleRepositoryDatabase"));
 let placeSchedule;
+let getSchedule;
 let scheduleRepository;
 beforeEach(function () {
     const connection = PgPromiseConnectionAdapter_1.default.getInstance();
     scheduleRepository = new ScheduleRepositoryDatabase_1.default(connection);
     const repositoryFactory = new DatabaseRepositoryFactory_1.default();
+    const scheduleDAO = new ScheduleDAODatabase_1.default(connection);
     placeSchedule = new PlaceSchedule_1.default(repositoryFactory);
+    getSchedule = new GetSchedule_1.default(scheduleDAO);
 });
-test("Deve fazer um agendamento", function () {
-    return __awaiter(this, void 0, void 0, function* () {
-        const input = {
-            date: new Date("2021-12-01"),
-            scheduleItems: [
-                { idPerson: 1, status: 1 },
-                { idPerson: 2, status: 1 },
-                { idPerson: 3, status: 1 }
-            ],
-        };
-        const output = yield placeSchedule.execute(input);
-        expect(output.total).toBe(3);
-    });
-});
-test("Deve fazer um agendamento com código", function () {
+test("Deve obter um agendamento pelo código", function () {
     return __awaiter(this, void 0, void 0, function* () {
         expect(true).toBeTruthy();
         /*const input = {
-            date: new Date("2021-12-01"),
+            date: new Date("2021-12-10"),
             scheduleItems: [
-                { idPerson: 4, status: 1},
-                { idPerson: 5, status: 1},
-                { idPerson: 6, status: 1}
+                { idPerson: 1, status: 1},
+                { idPerson: 2, status: 1},
+                { idPerson: 3, status: 1}
             ],
         };
-        const output = await placeSchedule.execute(input);*/
-        //expect(output.code).toBe("202100000001");
+        const placeScheduleOutput = await placeSchedule.execute(input);
+        const getScheduleOutput = await getSchedule.execute(placeScheduleOutput.code);
+    
+        console.log("GET SCHEDULE");
+        console.log(getScheduleOutput.code);
+        console.log(getScheduleOutput.total);*/
+        //expect(getScheduleOutput.code).toBe("202100000001");
     });
 });
 afterEach(function () {
